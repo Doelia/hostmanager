@@ -6,7 +6,9 @@ import (
 )
 
 func add(domain, ip, hostname string) {
-
+	finalContent := getContentFile()
+	finalContent += domain + " " + ip + hostname + "\n"
+	setContentFile(finalContent)
 }
 
 func rm(domain string) {
@@ -20,7 +22,17 @@ func view() {
 
 func list() {
 	contentString := getContentFile()
-	lines := strings.Split(contentString, "\n")
+
+	linesSpaces := strings.Split(contentString, "\n")
+	linesTabs := strings.Split(contentString, "\t")
+
+	var lines []string
+	if len(linesSpaces) < len(linesTabs) {
+		lines = linesTabs
+	} else {
+		lines = linesSpaces
+	}
+
 	for _, line := range lines {
 		if line != "" {
 			if string(line[0]) != "#" {

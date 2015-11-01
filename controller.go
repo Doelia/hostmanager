@@ -31,6 +31,7 @@ func onAdd() {
 		hostname = os.Args[4]
 	}
 
+	rm(domain)
 	add(domain, ip, hostname)
 }
 
