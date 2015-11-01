@@ -7,7 +7,7 @@ import (
 
 func add(domain, ip, hostname string) {
 	finalContent := getContentFile()
-	finalContent += domain + " " + ip + hostname + "\n"
+	finalContent += domain + " " + ip + " " + hostname + "\n"
 	setContentFile(finalContent)
 }
 
