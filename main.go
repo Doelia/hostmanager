@@ -2,11 +2,18 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 )
 
 func getNameHostFile() string {
 	return "/etc/hosts"
+}
+
+func getContentFile() string {
+	content, _ := ioutil.ReadFile(getNameHostFile())
+	contentString := string(content)
+	return contentString
 }
 
 func main() {
@@ -25,9 +32,9 @@ func main() {
 	case "rm":
 		onRm()
 	case "help":
-		fmt.Println("list                             Affiche la liste des domaines entrées et triés")
-		fmt.Println("view                             Affiche le contenu du fichier host")
-		fmt.Println("add domain [ip] [nameserver]     Ajoute (ou remplace) un nouveau domaine")
-		fmt.Println("rm domain                        Supprime un domaine")
+		fmt.Println("list                             Affiche la liste des domaines enregistrés dans le fichier host")
+		fmt.Println("view                             Affiche le contenu brut du fichier host")
+		fmt.Println("add domain [ip] [nameserver]     Ajoute (ou remplace) un nouveau domaine au fichier host")
+		fmt.Println("rm domain                        Supprime un domaine du ficher host")
 	}
 }
