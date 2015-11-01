@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func add(domain, ip, hostname string) {
 
@@ -16,5 +19,13 @@ func view() {
 }
 
 func list() {
-
+	contentString := getContentFile()
+	lines := strings.Split(contentString, "\n")
+	for _, line := range lines {
+		if line != "" {
+			if string(line[0]) != "#" {
+				fmt.Println(line)
+			}
+		}
+	}
 }
