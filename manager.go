@@ -12,7 +12,21 @@ func add(domain, ip, hostname string) {
 }
 
 func rm(domain string) {
-
+	finalContent := ""
+	contentString := getContentFile()
+	lines := strings.Split(contentString, "\n")
+	for _, line := range lines {
+		if line != "" {
+			if string(line[0]) != "#" {
+				args := getArgumentsOfLine(line)
+				thisDomain := args[0]
+				if thisDomain != domain {
+					finalContent += line + "\n"
+				}
+			}
+		}
+	}
+	setContentFile(finalContent)
 }
 
 func view() {
@@ -22,17 +36,7 @@ func view() {
 
 func list() {
 	contentString := getContentFile()
-
-	linesSpaces := strings.Split(contentString, "\n")
-	linesTabs := strings.Split(contentString, "\t")
-
-	var lines []string
-	if len(linesSpaces) < len(linesTabs) {
-		lines = linesTabs
-	} else {
-		lines = linesSpaces
-	}
-
+	lines := strings.Split(contentString, "\n")
 	for _, line := range lines {
 		if line != "" {
 			if string(line[0]) != "#" {

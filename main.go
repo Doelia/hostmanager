@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -10,23 +9,6 @@ func check(e error) {
 	if e != nil {
 		panic(e)
 	}
-}
-
-func getNameHostFile() string {
-	return "/etc/hosts"
-}
-
-func getContentFile() string {
-	content, err := ioutil.ReadFile(getNameHostFile())
-	check(err)
-	contentString := string(content)
-	return contentString
-}
-
-func setContentFile(content string) {
-	contentBytes := []byte(content)
-	err := ioutil.WriteFile(getNameHostFile(), contentBytes, 0644)
-	check(err)
 }
 
 func main() {
