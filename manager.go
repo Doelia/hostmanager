@@ -7,7 +7,7 @@ import (
 
 func add(domain, ip, hostname string) {
 	finalContent := getContentFile()
-	finalContent += domain + " " + ip + " " + hostname + "\n"
+	finalContent += ip + " " + domain + " " + hostname + "\n"
 	setContentFile(finalContent)
 }
 
@@ -19,7 +19,7 @@ func rm(domain string) {
 		if line != "" {
 			if string(line[0]) != "#" {
 				args := getArgumentsOfLine(line)
-				thisDomain := args[0]
+				thisDomain := args[1]
 				if thisDomain != domain {
 					finalContent += line + "\n"
 				}
