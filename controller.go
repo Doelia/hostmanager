@@ -35,5 +35,11 @@ func onAdd() {
 }
 
 func onRm() {
+	if len(os.Args) < 3 {
+		fmt.Println("Veuillez entrer un nom de domaine")
+		return
+	}
 
+	domain := os.Args[2]
+	fmt.Println("rm", domain)
 }
