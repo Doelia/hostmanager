@@ -14,7 +14,6 @@ func main() {
 	if len(os.Args) >= 2 {
 		arg = os.Args[1]
 	}
-	fmt.Println(arg)
 
 	switch arg {
 	case "list":
