@@ -6,11 +6,11 @@ import (
 )
 
 func onList() {
-
+	list()
 }
 
 func onView() {
-
+	view()
 }
 
 func onAdd() {
@@ -31,7 +31,7 @@ func onAdd() {
 		hostname = os.Args[4]
 	}
 
-	fmt.Println("add", domain, ip, hostname)
+	add(domain, ip, hostname)
 }
 
 func onRm() {
@@ -41,5 +41,5 @@ func onRm() {
 	}
 
 	domain := os.Args[2]
-	fmt.Println("rm", domain)
+	rm(domain)
 }
