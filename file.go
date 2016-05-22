@@ -1,12 +1,21 @@
 package main
 
 import (
+	"runtime"
 	"io/ioutil"
 	"strings"
 )
 
+func isWindows() bool {
+	return runtime.GOOS == "windows"
+}
+
 func getNameHostFile() string {
-	return "C:/Windows/System32/drivers/etc/hosts"
+	if isWindows() {
+		return "C:/Windows/System32/drivers/etc/hosts"
+	} else {
+		return "/etc/hosts"
+	}	
 }
 
 func getContentFile() string {
