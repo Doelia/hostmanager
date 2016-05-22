@@ -6,7 +6,7 @@ import (
 )
 
 func getNameHostFile() string {
-	return "/etc/hosts"
+	return "C:/Windows/System32/drivers/etc/hosts"
 }
 
 func getContentFile() string {
